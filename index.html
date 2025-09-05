@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Premium de IA - Automação para o Mercado Imobiliário</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Exo+2:wght@700;800&display=swap');
+
+        :root {
+            --navy-blue: #0A192F;
+            --neon-blue: #64FFDA;
+            --light-blue: #A8B2D1;
+            --slate: #8892b0;
+            --white: #E6F1FF;
+            --bg-light: #F8F9FA;
+            --border-light: #dee2e6;
+            --dark-card: #112240;
+            --gold: #FFD700;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-light);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        /* --- Header com Partículas --- */
+        .header {
+            position: relative;
+            background-color: var(--navy-blue);
+            color: var(--white);
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--neon-blue);
+            overflow: hidden;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 2.5em;
+            font-weight: 800;
+            text-shadow: 0 0 20px rgba(100, 255, 218, 0.7);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            color: var(--light-blue);
+            margin-top: 15px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.5s;
+        }
+        
+        .main-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-wrapper {
+            width: 100%;
+            padding: 20px;
+        }
+        
+        .project-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            background: var(--white);
+            padding: 20px;
+            margin: -50px auto 0 auto;
+            position: relative;
+            z-index: 10;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-light);
+            max-width: 95%;
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+        
+        .meta-item strong {
+            display: block;
+            color: var(--navy-blue);
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 2em;
+            color: var(--navy-blue);
+            margin-top: 60px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        h2 .section-icon {
+            stroke: var(--navy-blue);
+            transition: transform 0.3s ease;
+        }
+        
+        h2:hover .section-icon {
+            transform: rotate(-10deg) scale(1.1);
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: var(--bg-light);
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-dark {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(10, 25, 47, 0.5);
+            background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .section-dark h2, .section-dark h3, .section-dark .card-title, .section-dark h4 {
+            color: var(--white);
+        }
+        
+        .section-dark h2 .section-icon {
+            stroke: var(--neon-blue);
+        }
+        
+        .section-dark .card {
+            background-color: var(--dark-card);
+            border: 1px solid #233554;
+            color: var(--light-blue);
+        }
+        
+        .section-dark .card-title {
+            color: var(--neon-blue);
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: var(--navy-blue);
+            margin-bottom: 20px;
+        }
+
+        ul { list-style-type: none; padding: 0; }
+        ul li {
+            background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="%2364FFDA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>') no-repeat left 5px;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            font-size: 1em;
+        }
+        
+        strong { color: var(--navy-blue); }
+        .section-dark strong { color: var(--neon-blue); }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--neon-blue);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(100, 255, 218, 0.4);
+        }
+
+        .card-title {
+            font-weight: 700;
+            color: var(--navy-blue);
+            font-size: 1.2em;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        /* --- Timeline --- */
+        .timeline { position: relative; padding: 20px 0; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px; top: 0; bottom: 0; width: 4px;
+            background: linear-gradient(to bottom, var(--neon-blue), var(--navy-blue));
+            border-radius: 2px;
+        }
+        .timeline-item { position: relative; padding-left: 50px; margin-bottom: 40px; }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 3px; top: 5px; width: 28px; height: 28px;
+            border-radius: 50%;
+            background: var(--dark-card);
+            border: 4px solid var(--neon-blue);
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+        .timeline-item:hover::before { transform: scale(1.2); }
+        .timeline-content {
+            background-color: var(--dark-card);
+            padding: 25px; border-radius: 8px; border: 1px solid #233554;
+        }
+        .timeline-title { font-weight: bold; color: var(--neon-blue); font-size: 1.2em; }
+        .timeline-duration { display: block; font-size: 0.9em; color: var(--light-blue); margin-bottom: 10px; }
+        
+        /* --- Tabela --- */
+        .table-container { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #233554; }
+        th { background-color: var(--dark-card); color: var(--neon-blue); font-family: 'Exo 2', sans-serif; }
+        tr:last-child td { border-bottom: none; }
+        
+        /* --- Seção de Investimento --- */
+        .investment-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+            border: 1px solid var(--border-light);
+            text-align: center;
+        }
+        .investment-card.exclusive {
+            background: linear-gradient(135deg, var(--navy-blue), #112240);
+            color: var(--white);
+            border: 2px solid var(--gold);
+            transform: scale(1.05);
+        }
+        .investment-card h3 {
+            color: var(--navy-blue);
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1.5em;
+        }
+        .investment-card.exclusive h3 {
+            color: var(--gold);
+        }
+        .price {
+            font-size: 2.5em;
+            font-weight: 800;
+            color: var(--navy-blue);
+            margin: 10px 0;
+        }
+        .price span {
+            font-size: 0.5em;
+            font-weight: 400;
+        }
+        .price.original {
+            text-decoration: line-through;
+            font-size: 1.2em;
+            color: var(--slate);
+        }
+        .exclusive .price { color: var(--white); }
+        .exclusive .price.original { color: var(--light-blue); }
+        .exclusive-tag {
+            background-color: var(--gold);
+            color: var(--navy-blue);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        /* --- Navegação --- */
+        .nav-menu {
+            position: fixed;
+            top: 0; left: -100%;
+            width: 250px;
+            height: 100%;
+            background-color: var(--navy-blue);
+            padding-top: 80px;
+            transition: left 0.3s ease-in-out;
+            z-index: 998;
+        }
+        .nav-menu.active { left: 0; }
+        .nav-menu ul { list-style: none; padding: 20px; }
+        .nav-menu ul li { padding: 0; margin-bottom: 15px; background: none; }
+        .nav-menu ul li a {
+            color: var(--light-blue); text-decoration: none; font-size: 1.1em;
+            transition: color 0.3s, padding-left 0.3s;
+        }
+        .nav-menu ul li a.active, .nav-menu ul li a:hover {
+            color: var(--neon-blue); font-weight: bold; padding-left: 10px;
+        }
+        .nav-toggle {
+            position: fixed;
+            top: 20px; right: 20px; z-index: 999;
+            background: var(--navy-blue); border: 1px solid var(--neon-blue);
+            color: var(--neon-blue); width: 40px; height: 40px;
+            border-radius: 5px; display: flex; flex-direction: column; 
+            justify-content: space-around; align-items: center; padding: 8px; cursor: pointer;
+        }
+        .nav-toggle .bar { width: 100%; height: 2px; background: var(--neon-blue); transition: all 0.3s; }
+        .nav-toggle.active .bar:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .nav-toggle.active .bar:nth-child(2) { opacity: 0; }
+        .nav-toggle.active .bar:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+
+        footer {
+            text-align: center; padding: 40px 20px; margin-top: 50px;
+            background-color: var(--navy-blue); color: var(--light-blue);
+            border-top: 5px solid var(--neon-blue);
+        }
+        footer a { color: var(--neon-blue); text-decoration: none; transition: text-shadow 0.3s ease; }
+        footer a:hover { text-shadow: 0 0 10px var(--neon-blue); }
+
+        /* --- Animações --- */
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- Media Queries (Desktop) --- */
+        @media (min-width: 768px) {
+            .header h1 { font-size: 3.5em; }
+            .header p { font-size: 1.3em; }
+            h2 { font-size: 2.5em; }
+            .project-meta { grid-template-columns: repeat(4, 1fr); max-width: 80%; }
+            .grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        }
+
+        @media (min-width: 1024px) {
+            .nav-toggle { display: none; }
+            .nav-menu { left: 0; width: 280px; position: sticky; top: 0; height: 100vh; flex-shrink: 0; }
+            .main-container { flex-direction: row; }
+            .content-wrapper { flex-grow: 1; }
+        }
+    </style>
+</head>
+<body>
+    
+    <button class="nav-toggle" id="nav-toggle">
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </button>
+    
+    <div class="main-container">
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="#diferencial" class="nav-link">1. Nosso Diferencial</a></li>
+                <li><a href="#resumo" class="nav-link">2. Resumo da Solução</a></li>
+                <li><a href="#objetivos" class="nav-link">3. Objetivos</a></li>
+                <li><a href="#problemas" class="nav-link">4. Desafios</a></li>
+                <li><a href="#solucao" class="nav-link">5. Solução Proposta</a></li>
+                <li><a href="#fases" class="nav-link">6. Fases do Projeto</a></li>
+                <li><a href="#seguranca" class="nav-link">7. Segurança e Parceria</a></li>
+                <li><a href="#investimento" class="nav-link">8. Proposta de Investimento</a></li>
+                <li><a href="#sucesso" class="nav-link">9. Critérios de Sucesso</a></li>
+                <li><a href="#riscos" class="nav-link">10. Riscos e Mitigações</a></li>
+            </ul>
+        </nav>
+
+        <div class="content-wrapper">
+            <header class="header">
+                <div id="particles-js"></div>
+                <div class="header-content">
+                    <h1>Proposta de Automação com IA</h1>
+                    <p>Processo Comercial Inteligente para o Mercado Imobiliário</p>
+                </div>
+            </header>
+        
+            <div class="container">
+                <div class="project-meta">
+                    <div class="meta-item"><strong>CLIENTE</strong><span>Rogaciano & Vitor</span></div>
+                    <div class="meta-item"><strong>FORNECEDOR</strong><span>BF Labs Tecnologia</span></div>
+                    <div class="meta-item"><strong>DATA</strong><span>05/09/2025</span></div>
+                    <div class="meta-item"><strong>IMPLEMENTAÇÃO</strong><span>20 Dias + Suporte</span></div>
+                </div>
+
+                <section class="section section-dark" id="diferencial">
+                    <h2>
+                        <svg class="section-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                        1. Por que a BF Labs é a Melhor Solução
+                    </h2>
+                    <h3>O Diferencial que Ninguém no Mercado Tem: Experiência Empresarial Real e Ativa</h3>
+                    <p>A grande diferença entre Bruno Falcão e 99% dos profissionais de IA no mercado é simples: <strong>ele ainda está no jogo, assim como você</strong>. Enquanto a maioria vem de backgrounds puramente técnicos, Bruno constrói sua expertise em tecnologia vivendo, no presente, as dores reais do empresário e focando em IA que resolve problemas e gera lucro hoje.</p>
+                    
+                    <h4 style="color: var(--neon-blue); font-family: 'Exo 2', sans-serif; margin-top: 30px; margin-bottom: 15px;">Trajetória Comprovada:</h4>
+                     <ul>
+                        <li><strong>HUB85:</strong> Cresceu uma empresa do zero, enfrentando os desafios operacionais que todo empresário conhece.</li>
+                        <li><strong>CMO do Ecossistema R7/Simplifica:</strong> Lidera a estratégia de marketing de um ecossistema com +400 clientes, lidando diariamente com os problemas que a IA precisa resolver.</li>
+                        <li><strong>Economia Real:</strong> Não trabalha com casos hipotéticos do Nubank ou Uber - opera no chão de fábrica das PMEs brasileiras.</li>
+                    </ul>
+
+                    <div class="grid" style="margin-top: 30px;">
+                        <div class="card">
+                            <h3 class="card-title">O Problema do Mercado de IA</h3>
+                            <p>O mercado está saturado de técnicos que dominam a tecnologia, mas não entendem de negócios. O resultado? Soluções caras, complexas e que não geram ROI. Eles vendem IA como um fim, nós a entregamos como um meio para o lucro.</p>
+                        </div>
+                        <div class="card">
+                            <h3 class="card-title">A BF Labs Inverte a Lógica</h3>
+                            <p>Não fazemos IA por fazer IA. Nossa única métrica de sucesso é o impacto no seu resultado. Usamos tecnologia para:</p>
+                            <ul>
+                                <li>Reduzir custos operacionais</li>
+                                <li>Aumentar a produtividade comercial</li>
+                                <li>Eliminar gargalos e acelerar processos</li>
+                                <li>Gerar resultados financeiros mensuráveis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section" id="resumo">
+                    <h2>
+                        <svg class="section-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                        2. Resumo da Solução
+                    </h2>
+                    <p>Implementação de um ecossistema de agentes de IA para automatizar o processo comercial da imobiliária, focando na qualificação, follow-up e nutrição de leads. A solução visa aumentar a eficiência operacional, permitindo que a equipe de corretores se concentre em negociações com clientes de alto potencial e prontos para a visita, maximizando as conversões e escalando a operação sem a necessidade de aumentar a equipe na mesma proporção.</p>
+                </section>
+
+                <section class="section" id="objetivos">
+                    <h2>
+                        <svg class="section-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        3. Objetivos do Projeto
+                    </h2>
+                    <div class="grid">
+                        <div class="card">
+                            <h3 class="card-title">Objetivo Principal</h3>
+                            <p>Automatizar o filtro inicial e o acompanhamento contínuo dos leads, aumentando o número de visitas qualificadas e liberando os corretores para se dedicarem ao fechamento de negócios.</p>
+                        </div>
+                        <div class="card">
+                            <h3 class="card-title">Objetivos Específicos</h3>
+                            <ul>
+                                <li>Filtrar leads com baixo potencial de compra.</li>
+                                <li>Garantir uma cadência de follow-up consistente e personalizada.</li>
+                                <li>Integrar 100% com o CRM <strong>Imobilead</strong>, enriquecendo a base de dados.</li>
+                                <li>Nutrir leads com tempo de compra mais longo, mantendo-os aquecidos.</li>
+                                <li>Reativar a base de contatos existente com campanhas inteligentes.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="section" id="problemas">
+                    <h2>
+                        <svg class="section-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        4. Desafios Atuais
+                    </h2>
+                    <div class="grid">
+                        <div class="card">
+                           <h3 class="card-title">Operacionais</h3>
+                            <ul>
+                                <li><strong>Volume vs. Qualidade:</strong> Grande volume de leads, muitos dos quais são apenas curiosos, consumindo tempo valioso da equipe.</li>
+                                <li><strong>Follow-up Inconsistente:</strong> A rotina agitada de visitas e negociações dificulta o acompanhamento sistemático de todos os leads.</li>
+                                <li><strong>Timing de Compra:</strong> Perda de contato com leads que possuem um ciclo de decisão mais longo, mas que poderiam comprar no futuro.</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                           <h3 class="card-title">Estratégicos</h3>
+                            <ul>
+                                <li><strong>Escalabilidade:</strong> Aumentar a geração de leads sem sobrecarregar a equipe atual é um desafio para o crescimento.</li>
+                                <li><strong>Custo de Aquisição:</strong> O investimento em marketing precisa ser otimizado, garantindo que cada lead receba a atenção necessária para maximizar o ROI.</li>
+                                <li><strong>Base Inativa:</strong> Uma base de contatos existente que não é trabalhada representa uma grande perda de oportunidade de recompra e reativação.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section section-dark" id="solucao">
+                    <h2>
+                        <svg class="section-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        5. Solução Proposta: Ecossistema de IA Comercial
+                    </h2>
+                    <h3>Capacidades e Funcionalidades</h3>
+                    <div class="grid">
+                        <div class="card"><h3 class="card-title">Processo Comercial Automatizado</h3><p>Implementamos uma metodologia comercial completa na IA, que vai muito além de um simples chatbot. Ela realiza follow-ups, qualifica, nutre e prepara o lead para o corretor.</p></div>
+                        <div class="card"><h3 class="card-title">Integração Nativa com CRM</h3><p>Conexão total com o <strong>Imobilead</strong>. Já analisamos a documentação de Webhooks e Callbacks da API e garantimos a sincronização em tempo real da criação e atualização de leads.</p></div>
+                        <div class="card"><h3 class="card-title">Análise de Dados e Sentimento</h3><p>A IA analisa as conversas para identificar a intenção de compra e o sentimento do lead, fornecendo insights valiosos para alinhar as estratégias de marketing e vendas.</p></div>
+                        <div class="card"><h3 class="card-title">Ativação Inteligente de Leads</h3><p>Ativa proativamente leads vindos de campanhas de cadastro, utilizando dados do anúncio (UTMs) para uma abordagem ultra-personalizada desde a primeira mensagem.</p></div>
+                        <div class="card"><h3 class="card-title">Comunicação Humanizada</h3><p>Capacidade de entender texto, áudio e imagem. A IA tem uma persona definida e se comunica de forma natural, com pausas e respostas contextuais, evitando a aparência de um robô.</p></div>
+                        <div class="card"><h3 class="card-title">Ferramenta de Disparo e Reativação</h3><p>Uma ferramenta integrada para campanhas de reativação da base. Os disparos são feitos de forma inteligente e, quando um lead responde, a IA assume a conversa com todo o contexto.</p></div>
+                    </div>
+                </section>
+
+                <section class="section section-dark" id="fases">
+                    <h2>
+                        <svg class="section-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                        6. Fases do Projeto
+                    </h2>
+                    <div class="timeline">
+                        <div class="timeline-item"><div class="timeline-content"><div class="timeline-title">Fase 1: Setup e Lançamento</div><span class="timeline-duration">20 dias</span><p>Mapeamento do processo comercial, definição das regras de qualificação, configuração da infraestrutura, integração com o <strong>Imobilead</strong> e ativação da IA.</p></div></div>
+                        <div class="timeline-item"><div class="timeline-content"><div class="timeline-title">Fase 2: Otimização Contínua</div><span class="timeline-duration">Parceria Contínua</span><p>Nosso sistema é um organismo vivo. Com ajustes finos, melhorias e upgrades ilimitados, a IA e nosso framework refinam o processo constantemente para gerar cada vez mais eficiência e resultados.</p></div></div>
+                    </div>
+                </section>
+
+                <section class="section section-dark" id="seguranca">
+                    <h2>
+                        <svg class="section-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        7. Segurança e Parceria: O Alicerce do Seu Investimento
+                    </h2>
+                    <div class="grid">
+                        <div class="card">
+                            <h3 class="card-title">O Risco da IA "Barata"</h3>
+                            <p>Contratar uma solução de IA baseada apenas no preço pode levar a um grande prejuízo e frustração. Ferramentas genéricas e sem suporte especializado resultam em automações que não funcionam, processos quebrados e, no fim, mais trabalho manual para consertar os erros.</p>
+                        </div>
+                        <div class="card">
+                            <h3 class="card-title">A Segurança da BF Labs</h3>
+                            <p>Com a gente, você não contrata um software, mas um parceiro de negócios. Você participa dos nossos treinamentos, sabe onde fica nossa sede e tem as portas abertas. Isso é o alicerce de uma parceria de verdade: segurança, estrutura robusta e um processo validado no mercado real.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="section" id="investimento">
+                    <h2>
+                        <svg class="section-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        8. Proposta de Investimento
+                    </h2>
+                    <p style="text-align: center; max-width: 800px; margin: -15px auto 30px auto;">Lembre-se: você não está contratando apenas uma 'ferramenta de IA', mas um <strong>parceiro de negócios com experiência real</strong>, focado em implementar um processo que entrega ROI mensurável e resolve problemas operacionais.</p>
+                     <div class="grid">
+                         <div class="investment-card">
+                            <h3>Proposta Padrão</h3>
+                            <p><strong>Setup de Implementação</strong></p>
+                            <div class="price original">R$ 5.000</div>
+                            <div class="price">R$ 4.000 <span>à vista</span></div>
+                            <p>ou <strong>R$ 4.500</strong> em 8x no cartão</p>
+                            <hr style="border-color: var(--border-light); margin: 20px 0;">
+                            <p><strong>Manutenção e Otimização Mensal</strong></p>
+                             <div class="price original">R$ 1.500</div>
+                            <div class="price">R$ 1.300</div>
+                            <p>(Custos de servidor e APIs inclusos, independente do volume)</p>
+                         </div>
+                         <div class="investment-card exclusive">
+                            <div class="exclusive-tag">Oferta Exclusiva - 05/09</div>
+                            <h3>Condição Especial</h3>
+                            <p><strong>Setup de Implementação</strong></p>
+                            <div class="price original">R$ 5.000</div>
+                            <div class="price">R$ 3.500 <span>à vista</span></div>
+                            <p>ou <strong>R$ 4.100</strong> em 8x no cartão</p>
+                            <hr style="border-color: #233554; margin: 20px 0;">
+                            <p><strong>Manutenção e Otimização Mensal</strong></p>
+                            <div class="price original">R$ 1.500</div>
+                            <div class="price">R$ 1.000</div>
+                            <p>(Custos de servidor e APIs inclusos, independente do volume)</p>
+                         </div>
+                     </div>
+                     <div class="card" style="margin-top: 20px; text-align: center; border-color: var(--gold); border-width: 2px;">
+                        <h3 class="card-title" style="color: #c5a300;">BÔNUS ESPECIAL</h3>
+                        <p>Fechando a parceria hoje, vocês garantem até <strong>3 vagas</strong> para a imersão <strong>Inteligência em Marketing com Bruno Falcão</strong>.</p>
+                     </div>
+                </section>
+                
+                <section class="section" id="sucesso">
+                     <h2>
+                        <svg class="section-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        9. Critérios de Sucesso
+                     </h2>
+                     <div class="grid">
+                         <div class="card">
+                             <h3 class="card-title">Resultados Comprovados</h3>
+                             <ul>
+                                <li><strong>40% de aumento</strong> na produtividade comercial.</li>
+                                <li><strong>35% de redução</strong> no ciclo de vendas.</li>
+                                <li><strong>30% de melhoria</strong> no ROI de marketing.</li>
+                                <li>Reativação de, no mínimo, 15% da base de contatos atual.</li>
+                             </ul>
+                         </div>
+                         <div class="card">
+                             <h3 class="card-title">Métricas Qualitativas</h3>
+                             <ul>
+                                 <li>Corretores mais focados em negociações e visitas.</li>
+                                 <li>Padronização e consistência na comunicação inicial.</li>
+                                 <li>Melhoria na percepção da marca pelo atendimento ágil e inteligente.</li>
+                                 <li>Visibilidade completa do funil de vendas, desde o primeiro contato.</li>
+                             </ul>
+                         </div>
+                     </div>
+                </section>
+
+                <section class="section" id="riscos">
+                    <h2>
+                        <svg class="section-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        10. Riscos e Mitigações
+                    </h2>
+                    <div class="grid">
+                        <div class="card"><h3 class="card-title">Riscos Identificados</h3><ul><li><strong>Adoção pela Equipe:</strong> Resistência inicial à mudança de processo. Mitigado com treinamento focado nos benefícios diretos para o corretor (mais visitas quentes, menos trabalho repetitivo).</li><li><strong>Complexidade de Integração:</strong> Possíveis desafios na sincronização de dados específicos. Mitigado por uma fase de mapeamento detalhado e testes rigorosos.</li></ul></div>
+                        <div class="card"><h3 class="card-title">Plano de Contingência</h3><ul><li>Suporte técnico dedicado durante toda a implementação e operação.</li><li>Processo de implementação iterativo, com validações constantes da sua equipe.</li><li>Flexibilidade para ajustar as regras de qualificação e comunicação em tempo real.</li></ul></div>
+                    </div>
+                </section>
+            </div>
+            
+            <footer>
+                <p>Contato do projeto: <a href="mailto:tecnologia@bflabs.com.br">tecnologia@bflabs.com.br</a></p>
+                <p>&copy; 2025 BF Labs Tecnologia. Todos os direitos reservados.</p>
+            </footer>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.getElementById('particles-js')) {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#64FFDA" },
+                    "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": false }, "size": { "value": 3, "random": true },
+                    "line_linked": { "enable": true, "distance": 150, "color": "#A8B2D1", "opacity": 0.4, "width": 1 },
+                    "move": { "enable": true, "speed": 4, "direction": "none", "out_mode": "out" }
+                },
+                "interactivity": { "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" } },
+                "modes": { "repulse": { "distance": 100 }, "push": { "particles_nb": 4 } } },
+            });
+        }
+        
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+        }
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 1024) {
+                    navMenu.classList.remove('active');
+                    navToggle.classList.remove('active');
+                }
+            });
+        });
+
+        const sections = document.querySelectorAll('section[id]');
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { root: null, rootMargin: '0px', threshold: 0.1 });
+
+        sections.forEach(section => sectionObserver.observe(section));
+
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-30% 0px -70% 0px' });
+        sections.forEach(section => navObserver.observe(section));
+    });
+    </script>
+</body>
+</html>
